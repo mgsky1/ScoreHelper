@@ -13,5 +13,6 @@
 > * 源码运时需要Python3以上版本，依赖[BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html)、[PrettyTable](https://pypi.python.org/pypi/PrettyTable)和[PIL](http://www.pythonware.com/products/pil/)
 
 ## Screen Shots
+![](http://xxx.fishc.com/album/201802/16/175159uzmln67jajjm8qc4.png)
 
 ![](http://xxx.fishc.com/album/201802/16/160442pz5gyg8pg58yskr5.png)
