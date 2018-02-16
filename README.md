@@ -11,8 +11,6 @@
 > * 如果Windows下exe文件运行错误的话请下载[Visual C++ Redistributable](https://www.microsoft.com/zh-cn/download/details.aspx?id=48145)**32位**版本
 > * 为了取得更好的显示效果，建议Windows下使用**PowerShell**运行，运行方式为：切换到bin目录，输入 `./三明学院成绩查询助手`
 > * 源码运时需要Python3以上版本，依赖[BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html)、[PrettyTable](https://pypi.python.org/pypi/PrettyTable)和[PIL](http://www.pythonware.com/products/pil/)
-> * 程序会在脚本当前目录下生成验证码文件，需要手动输入
-> * 运行时需要Python3以上版本，依赖[BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html)
 
 ## Screen Shots
 
