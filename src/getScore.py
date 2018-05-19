@@ -145,5 +145,7 @@ if __name__ == '__main__':
         file = open(r'D:\Program Files\ScoreHelper\uinfo.bin','wb')
         pickle.dump(udick,file)
         file.close()
+    except:
+        print("失败！可能是你没有完成教学评价！没有完成教学评价则无法查看成绩！")
     finally:
         input('Done！请按任意键退出')
