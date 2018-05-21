@@ -11,6 +11,7 @@ import bs4
 import getpass
 import pickle
 import os
+import platform
 from bs4 import BeautifulSoup
 from prettytable import PrettyTable
 from PIL import Image
@@ -18,6 +19,21 @@ from PIL import Image
 #准备Cookie和opener，因为cookie存于opener中，所以以下所有网页操作全部要基于同一个opener
 cookie = http.cookiejar.CookieJar()
 opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookie))
+
+#判断操作系统类型
+def getOpeningSystem():
+    return platform.system()
+
+#判断是否联网
+
+def isConnected():
+    userOs = getOpeningSystem()
+    if userOs == "Windows":
+        result = os.system("@echo off\nping -n 2 www.baidu.com")
+    else:
+        result = os.system("ping -c 2 www.baidu.com > /dev/null")
+    
+    return True if result == 0 else False
 
 #登陆
 def login():
@@ -121,6 +137,8 @@ def getScore():
 if __name__ == '__main__':
     try:
         print('欢迎使用三明学院成绩查询助手！')
+        print('正在检查网络...')
+        isConnected()
         with open(r'D:\Program Files\ScoreHelper\uinfo.bin','rb') as file:
             udick = pickle.load(file)
             sname = udick['sname']
@@ -129,6 +147,8 @@ if __name__ == '__main__':
         while(not login()):
             continue
         getScore()
+    except OSError:
+        print("网络连接不正常！")
     except FileNotFoundError:
         os.mkdir(r'D:\Program Files\ScoreHelper')#注：针对Windows目录结构
         print('这是你第一次使用，请按提示输入信息，以后可不必再次输入~')
