@@ -108,8 +108,8 @@ def getScore():
     soup = BeautifulSoup(response.read().decode('gb2312'),'html.parser')
     html = soup.find('table',class_='datelist')
     print('你的所有成绩如下：')
-    #指定要输出的列
-    outColumn = [1,3,4,6,7,8]
+    #指定要输出的列，原网页的表格列下标从0开始
+    outColumn = [1,2,3,4,6,7,8]
     #用于标记是否是遍历第一行
     flag = True
     #根据DOM解析所要数据，首位的each是NavigatableString对象，其余为Tag对象
