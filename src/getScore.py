@@ -12,6 +12,7 @@ import getpass
 import pickle
 import os
 import platform
+import subprocess
 from bs4 import BeautifulSoup
 from prettytable import PrettyTable
 from PIL import Image
@@ -29,11 +30,9 @@ def getOpeningSystem():
 def isConnected():
     userOs = getOpeningSystem()
     if userOs == "Windows":
-        result = os.system("@echo off\nping -n 2 www.baidu.com")
+        subprocess.check_call(["ping", "-n", "2", "www.baidu.com"], stdout=subprocess.PIPE)
     else:
-        result = os.system("ping -c 2 www.baidu.com > /dev/null")
-    
-    return True if result == 0 else False
+        subprocess.check_call(["ping", "-c", "2", "www.baidu.com"], stdout=subprocess.PIPE)
 
 #登陆
 def login():
@@ -108,8 +107,8 @@ def getScore():
     soup = BeautifulSoup(response.read().decode('gb2312'),'html.parser')
     html = soup.find('table',class_='datelist')
     print('你的所有成绩如下：')
-    #指定要输出的列
-    outColumn = [1,3,4,6,7,8]
+    #指定要输出的列，原网页的表格列下标从0开始
+    outColumn = [1,2,3,4,6,7,8]
     #用于标记是否是遍历第一行
     flag = True
     #根据DOM解析所要数据，首位的each是NavigatableString对象，其余为Tag对象
@@ -147,8 +146,6 @@ if __name__ == '__main__':
         while(not login()):
             continue
         getScore()
-    except OSError:
-        print("网络连接不正常！")
     except FileNotFoundError:
         os.mkdir(r'D:\Program Files\ScoreHelper')#注：针对Windows目录结构
         print('这是你第一次使用，请按提示输入信息，以后可不必再次输入~')
@@ -165,6 +162,8 @@ if __name__ == '__main__':
         file = open(r'D:\Program Files\ScoreHelper\uinfo.bin','wb')
         pickle.dump(udick,file)
         file.close()
+    except subprocess.CalledProcessError:
+        print("网络连接不正常！请检查网络！")
     except:
         print("失败！可能是你没有完成教学评价！没有完成教学评价则无法查看成绩！")
     finally:
