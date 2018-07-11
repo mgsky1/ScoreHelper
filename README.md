@@ -17,6 +17,6 @@
 > * 目前是控制台模式，有可能的话想做一个有GUI界面的~
 
 ## Screen Shots
-![](http://xxx.fishc.com/album/201802/16/183915nmnugfndc11dhcwc.png)
+![](http://xxx.fishc.org/album/201802/16/183915nmnugfndc11dhcwc.png)
 
-![](http://xxx.fishc.com/album/201802/16/160442pz5gyg8pg58yskr5.png)
+![](http://xxx.fishc.org/album/201802/16/160442pz5gyg8pg58yskr5.png)
